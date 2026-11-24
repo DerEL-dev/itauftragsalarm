@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IT-Aufträge Alarm: passende öffentliche IT-Aufträge per E-Mail</title>
+<meta name="description" content="Passende öffentliche IT-Ausschreibungen per E-Mail. Gib ein, was und wo du anbietest, und bekomm eine E-Mail, sobald ein Auftrag passt. Kostenlos.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="IT-Aufträge Alarm">
+<meta property="og:description" content="Öffentliche IT-Aufträge, die zu dir passen. Per E-Mail, sobald wir einen finden.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://itauftragsalarm.de/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F5BD8'/%3E%3Cpath d='M9 16.5l5 5 9-11' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-step="intro">
+
+<!-- Symbole, werden per <use> eingebunden -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 16 16"><path d="M3.5 8.500l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.500s7-6.2 7-11.500a7 7 0 1 0-14 0c0 5.3 7 11.5 7 11.500z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="currentColor"/></symbol>
+    <symbol id="i-locate" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="6.5"/><path d="M12 2.500v3M12 18.500v3M2.5 12h3M18.5 12h3"/></g><circle cx="12" cy="12" r="2.4" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./">IT-Aufträge Alarm</a>
+    <button type="button" class="back" id="back" aria-label="Einen Schritt zurück">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M11 5l-7 7 7 7M4.5 12H20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="progress" id="progress" role="progressbar" aria-label="Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+  </div>
+</header>
+
+<form id="f" novalidate>
+  <input type="hidden" name="auftragsgroesse" id="groesse-out" value="Egal">
+  <input type="hidden" name="standort" id="out-standort" value="">
+  <input type="hidden" name="standort_plz" id="out-plz" value="">
+  <input type="hidden" name="standort_breite" id="out-lat" value="">
+  <input type="hidden" name="standort_laenge" id="out-lon" value="">
+  <input type="hidden" name="umkreis" id="out-km" value="50 km">
+  <div class="hp" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
+
+  <main>
+    <!-- Start -->
+    <section class="step is-active" data-id="intro">
+      <div class="hero">
+        <h1 tabindex="-1">Bekomme einen Alarm, wenn ein passender IT&#8209;Auftrag gepostet wird</h1>
+        <p class="lead">Gib ein, was und wo du anbietest. Sobald etwas Passendes gefunden wird, bekommst du eine E&#8209;Mail.</p>
+        <button type="button" class="btn btn-hero" id="start">Los</button>
+        <p class="note">Kostenlos, nur 4 Fragen.</p>
+      </div>
+    </section>
+
+    <!-- Leistung -->
+    <section class="step" data-id="leistung">
+      <div class="q"><h2 id="q-leistung" tabindex="-1">Was bietest du an?</h2></div>
+      <div class="options" role="radiogroup" aria-labelledby="q-leistung">
+        <label class="option"><input type="radio" name="leistung" value="Softwareentwicklung"><span class="option-label">Softwareentwicklung</span><span class="tick"><svg width="14" height="14"><use href="#i-check"/></svg></span></label>
+        <label class="option"><input type="radio" name="leistung" value="Hosting und Betrieb"><span class="option-label">Hosting und Betrieb</span><span class="tick"><svg width="14" height="14"><use href="#i-check"/></svg></span></label>
+        <label class="option"><input type="radio" name="leistung" value="IT-Beratung"><span class="option-label">IT-Beratung</span><span class="tick"><svg width="14" height="14"><use href="#i-check"/></svg></span></label>
+        <label class="option"><input type="radio" name="leistung" value="Support und Service"><span class="option-label">Support und Service</span><span class="tick"><svg width="14" height="14"><use href="#i-check"/></svg></span></label>
+        <label class="option"><input type="radio" name="leistung" value="IT-Sicherheit"><span class="option-label">IT-Sicherheit</span><span class="tick"><svg width="14" height="14"><use href="#i-check"/></svg></span></label>
+        <label class="option"><input type="radio" name="leistung" value="Hardware und Infrastruktur"><span class="option-label">Hardware und Infrastruktur</span><span class="tick"><svg width="14" height="14"><use href="#i-check"/></svg></span></label>
+        <label class="option"><input type="radio" name="leistung" value="Etwas anderes"><span class="option-label">Etwas anderes</span><span class="tick"><svg width="14" height="14"><use href="#i-check"/></svg></span></label>
+      </div>
+      <div id="andere" class="field" hidden>
+        <label for="andere-text" class="label">Beschreib kurz, was du anbietest</label>
+        <input type="text" id="andere-text" name="leistung_andere" maxlength="120" enterkeyhint="next" placeholder="Zum Beispiel: Schulverwaltungssoftware">
+      </div>
+    </section>
+
+    <!-- Leistung genauer -->
+    <section class="step" data-id="detail">
+      <div class="q">
+        <h2 id="q-detail" tabindex="-1">Was genau davon?</h2>
+        <p>Mehrere möglich. Wenn du nichts auswählst, passt alles aus dem Bereich.</p>
+      </div>
+      <div class="chips" id="detail-chips" role="group" aria-labelledby="q-detail"></div>
+      <div id="detail-andere" class="field" hidden>
+        <label for="detail-andere-text" class="label">Was genau?</label>
+        <input type="text" id="detail-andere-text" name="leistung_detail_andere" maxlength="120" enterkeyhint="next" placeholder="Zum Beispiel: Schnittstellen zu SAP">
+      </div>
+    </section>
+
+    <!-- Standort und Umkreis -->
+    <section class="step" data-id="ort">
+      <div class="q"><h2 id="q-ort" tabindex="-1">Wo sollen die Aufträge liegen?</h2></div>
+      <div class="where">
+        <div class="where-form">
+          <div class="field">
+            <label for="ort-input" class="label">Dein Standort</label>
+            <div class="combo" id="combo">
+              <svg class="combo-pin" width="22" height="22" aria-hidden="true"><use href="#i-pin"/></svg>
+              <input id="ort-input" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="ort-list" autocomplete="off" autocorrect="off" autocapitalize="words" spellcheck="false" enterkeyhint="search" placeholder="PLZ oder Ort">
+              <button type="button" class="combo-clear" id="ort-clear" aria-label="Standort löschen" hidden>
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+              </button>
+              <ul id="ort-list" class="combo-list" role="listbox" aria-label="Vorschläge" hidden></ul>
+            </div>
+            <button type="button" class="ghost" id="locate"><svg width="20" height="20" aria-hidden="true"><use href="#i-locate"/></svg><span>Meinen Standort verwenden</span></button>
+            <p class="field-msg" id="ort-msg" role="status"></p>
+          </div>
+          <div class="field">
+            <div class="label-row"><label class="label" for="rkm">Umkreis</label><output class="label-value" id="km-out" for="rkm">50 km</output></div>
+            <div class="range single">
+              <div class="range-track"><div class="range-fill" id="km-fill"></div><div class="range-ticks" id="km-ticks"></div></div>
+              <input type="range" id="rkm" min="0" max="5" step="1" value="2">
+            </div>
+            <div class="range-ends"><span>10 km</span><span>Ganz DACH</span></div>
+          </div>
+        </div>
+        <figure class="mapcard">
+          <div class="map" id="map"></div>
+          <figcaption>
+            <strong id="km-value" aria-live="polite">50 km um deinen Standort</strong>
+            <span>Oder tippe einfach auf die Karte.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Auftragsgröße -->
+    <section class="step" data-id="groesse">
+      <div class="q">
+        <h2 id="q-groesse" tabindex="-1">Welche Auftragsgröße passt zu dir?</h2>
+        <p>Ohne Änderung bekommst du jede Größe.</p>
+      </div>
+      <div class="sizecard">
+        <p class="range-value" id="range-value" aria-live="polite">Jede Größe</p>
+        <div class="range" id="range">
+          <div class="range-track"><div class="range-fill" id="range-fill"></div><div class="range-ticks" id="range-ticks"></div></div>
+          <input type="range" id="rmin" min="0" max="7" step="1" value="0" aria-label="Kleinster Auftragswert">
+          <input type="range" id="rmax" min="0" max="7" step="1" value="7" aria-label="Größter Auftragswert">
+        </div>
+        <div class="range-ends"><span>0 €</span><span id="range-max"></span></div>
+      </div>
+    </section>
+
+    <!-- E-Mail -->
+    <section class="step" data-id="email">
+      <div class="q"><h2 id="q-email" tabindex="-1">Wohin sollen wir die Treffer schicken?</h2></div>
+      <div class="field">
+        <label for="email" class="label">Deine E-Mail-Adresse</label>
+        <input id="email" type="email" name="email" data-autofocus autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" placeholder="name@firma.de">
+        <p class="field-msg" id="email-hint" hidden>Meintest du <button type="button" class="textlink" id="email-fix"></button>?</p>
+      </div>
+      <label class="consent">
+        <input type="checkbox" name="einwilligung" value="ja">
+        <span class="box"><svg width="14" height="14" aria-hidden="true"><use href="#i-check"/></svg></span>
+        <span>Ja, schickt mir passende Ausschreibungen per E-Mail. Abbestellen geht jederzeit, mehr dazu in der <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span>
+      </label>
+      <div class="summary">
+        <p class="summary-title">Dein Alarm</p>
+        <dl id="summary"></dl>
+      </div>
+    </section>
+
+    <!-- Fertig -->
+    <section class="step" data-id="done">
+      <div class="done">
+        <span class="done-mark" aria-hidden="true"><svg viewBox="0 0 16 16" width="26" height="26"><path d="M3.5 8.5l3 3 6-7" pathLength="1" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h2 tabindex="-1">Alarm eingerichtet.</h2>
+        <p class="lead">Sobald wir einen passenden Auftrag finden, schreiben wir an <strong id="done-mail"></strong>. Du kannst dieses Fenster jetzt schließen.</p>
+        <div class="summary">
+          <p class="summary-title">Dein Alarm</p>
+          <dl id="summary-done"></dl>
+        </div>
+      </div>
+    </section>
+
+    <noscript><p class="noscript">Diese Seite braucht JavaScript, um das Formular anzuzeigen.</p></noscript>
+  </main>
+
+  <footer class="legal">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+  </footer>
+
+  <div class="bar">
+    <div class="bar-in">
+      <p class="bar-msg" id="msg" role="alert"></p>
+      <button type="submit" class="btn" id="go">Weiter</button>
+    </div>
+  </div>
+</form>
+
+<script src="js/data.js"></script>
+<script src="js/geo.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
